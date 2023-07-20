@@ -1,20 +1,6 @@
 <?php
 
-function saque ($conta, $valor) {
-    if ($conta['saldo']< $valor){
-        echo "Você não tem saldo o suficiente". PHP_EOL;
-    }
-    else{
-        return $conta["saldo"] -= $valor;
-    }
-    }
-
-function deposito($conta, $valor) {
-    if ($valor<=0){
-        echo "Não é possivel depositar valores nulos ou negativos.";
-    }
-    else{return $conta["saldo"] += $valor;}
-}
+require_once 'function.php';
 
 $conta1 = [
     'titular' => 'Fritz',
@@ -22,7 +8,7 @@ $conta1 = [
     'saldo' => 3200
 ];
 $conta2 = [
-    'titular' => 'Henrique',
+    'titular' => 'Henríque',
     'conta' => 'Poupança',
     'saldo' => 1100
 ];
@@ -38,6 +24,23 @@ $contas = [
     12674567890 => $conta3
 ];
 
-$gg = deposito($contas[12345678910], -500);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Eu sou o Fritz e to aprendendo php</h1>
 
-echo $gg;
+    <ul>
+        <?php foreach ($contas as $cpf => $conta){?>
+        <p>CPF: <?=$cpf?></p>
+        <li>Titular: <?=$conta['titular']?></li>
+        <li>Saldo: <?=$conta['saldo']?></li>
+        <?php } ?>
+    </ul>
+</body>
+</html>
